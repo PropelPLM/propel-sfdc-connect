@@ -1,0 +1,33 @@
+{
+  "name": "@propelsoftwaresolutions/propel-sfdc-connect",
+  "version": "1.0.0",
+  "description": "Wrapper module for jforce-propel",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "jsforce-propel": "^1.9.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "mocha": "^10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PropelPLM/propel-sfdc-connect.git"
+  },
+  "keywords": [
+    "express",
+    "heroku",
+    "node"
+  ],
+  "author": "Propel Software Solutions",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PropelPLM/propel-sfdc-connect/issues"
+  },
+  "homepage": "https://github.com/PropelPLM/propel-sfdc-connect#readme"
+}
