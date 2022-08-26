@@ -1,3 +1,9 @@
-module.exports = require('./lib/PropelConnect')
-module.exports = require('./lib/PropelHelper')
-module.exports = require('./lib/PropelLog')
+/**
+ * adding the key objects to exports
+ */
+
+module.exports = {
+    connection: require('./lib/PropelConnect'),
+    helper: require('./lib/PropelHelper'),
+    log: require('./lib/PropelLog'),
+}
