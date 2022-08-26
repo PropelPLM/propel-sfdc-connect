@@ -1,12 +1,8 @@
 {
   "name": "@propelsoftwaresolutions/propel-sfdc-connect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wrapper module for jforce-propel",
-  "exports": {
-    "./PropelConnect": "./lib/PropelConnect.js",
-    "./PropelHelper": "./lib/PropelHelper.js",
-    "./PropelLog": "./lib/PropelLog.js"
-  },
+  "exports": "./index.js",
   "scripts": {
     "test": "mocha"
   },
@@ -25,7 +21,6 @@
   },
   "keywords": [
     "express",
-    "heroku",
     "node"
   ],
   "author": "Propel Software Solutions",
