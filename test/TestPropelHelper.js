@@ -28,8 +28,8 @@ describe('PropelHelper', () => {
   const helper = new PropelHelper(
     'test', // enter in the connection
     mappingObj, // enter in the mapping obj
-    { id: 'test' }, // enter in the options obj
-    'TEST' // enter in the namespace
+    'TEST', // enter in the namespace
+    { id: 'test' } // enter in the options obj
   )
   describe('constructor', () => {
     it('variables should be set', () => {

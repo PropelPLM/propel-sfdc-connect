@@ -3,11 +3,17 @@
  */
 
 const PropelConnect = require('./lib/PropelConnect')
+const PropelHelper = require('./lib/PropelHelper')
+const PropelLog = require('./lib/PropelLog')
+
 module.exports = {
-    propel_connect: require('./lib/PropelConnect'),
-    propel_helper: require('./lib/PropelHelper'),
-    propel_log: require('./lib/PropelLog'),
-    new_connection: (hostUrl, sessionId) => {
-      return new PropelConnect(hostUrl, sessionId)
-    }
+  newConnection: (hostUrl, sessionId) => {
+    return new PropelConnect(hostUrl, sessionId)
+  },
+  newHelper: (connection, mapping, namespace, options) => {
+    return new PropelHelper(connection, mapping, namespace, options)
+  },
+  newLog: args => {
+    return new PropelLog(args)
+  },
 }
