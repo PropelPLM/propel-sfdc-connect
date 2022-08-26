@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-    connection: require('./lib/PropelConnect'),
-    helper: require('./lib/PropelHelper'),
-    log: require('./lib/PropelLog'),
+    propel_connect: require('./lib/PropelConnect'),
+    propel_helper: require('./lib/PropelHelper'),
+    propel_log: require('./lib/PropelLog'),
 }
