@@ -2,7 +2,11 @@
   "name": "@propelsoftwaresolutions/propel-sfdc-connect",
   "version": "1.0.0",
   "description": "Wrapper module for jforce-propel",
-  "main": "index.js",
+  "exports": {
+    "./PropelConnect": "./lib/PropelConnect.js",
+    "./PropelHelper": "./lib/PropelHelper.js",
+    "./PropelLog": "./lib/PropelLog.js"
+  },
   "scripts": {
     "test": "mocha"
   },
