@@ -1,6 +1,6 @@
 {
   "name": "@propelsoftwaresolutions/propel-sfdc-connect",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Wrapper module for jforce-propel",
   "exports": "./index.js",
   "scripts": {
