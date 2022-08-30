@@ -13,7 +13,7 @@ module.exports = {
   newHelper: (connection, mapping, namespace, options) => {
     return new PropelHelper(connection, mapping, namespace, options)
   },
-  newLog: args => {
-    return new PropelLog(args)
+  newLog: (errors, id, isInsert, objName, rowName, success) => {
+    return new PropelLog(errors, id, isInsert, objName, rowName, success)
   },
 }
