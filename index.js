@@ -16,7 +16,4 @@ module.exports = {
   newLog: (errors, id, isInsert, objName, rowName, success) => {
     return new PropelLog(errors, id, isInsert, objName, rowName, success)
   },
-  createEventId: orgId => {
-    return PropelHelper.createEventId(orgId)
-  }
 }
