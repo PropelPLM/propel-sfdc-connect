@@ -13,7 +13,7 @@ module.exports = {
   newHelper: (connection, mapping, namespace, options) => {
     return new PropelHelper(connection, mapping, namespace, options)
   },
-  newLog: orgId => {
-    return new PropelLog(orgId)
+  newLog: (connection, orgId) => {
+    return new PropelLog(connection, orgId)
   },
 }
