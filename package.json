@@ -29,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/PropelPLM/propel-sfdc-connect/issues"
   },
-  "homepage": "https://github.com/PropelPLM/propel-sfdc-connect#readme"
+  "homepage": "https://github.com/PropelPLM/propel-sfdc-connect#readme",
+  "types": "./index.d.ts"
 }
