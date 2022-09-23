@@ -3,13 +3,12 @@ var assert = require('assert')
 const PropelLog = require('../lib/PropelLog')
 
 describe('PropelLog', () => {
-  const log = new PropelLog('test', '05002200')
+  const log = new PropelLog('test')
 
   describe('constructor', () => {
     it('setup varibles should be set', () => {
 
       assert.equal(log.connection, 'test', 'connection was not set')
-      assert.equal(log.orgId, '05002200', 'orgid was not set')
     })
   })
 
@@ -33,7 +32,7 @@ describe('PropelLog', () => {
   describe('_createEventId', () => {
     it('getting back an event Id', () => {
 
-      assert.ok(log._createEventId().includes('05002200'), 'event Id does not include the orgid')
+      assert.ok(log._createEventId().length > 0, 'event Id is null')
     })
   })
 })
