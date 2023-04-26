@@ -16,8 +16,8 @@ module.exports = {
   newConnection: (hostUrl, sessionId) => {
     return new PropelConnect(hostUrl, sessionId)
   },
-  newJwtConnection: () => {
-    return new PropelJwtConnect()
+  jwtSession: (options) => {
+    return PropelJwtConnect.getJwt(options)
   },
   newParser: (data) => {
     return new PropelParser(data)
