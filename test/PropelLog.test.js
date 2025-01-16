@@ -1,6 +1,4 @@
-var assert = require('assert')
-
-const PropelLog = require('../lib/PropelLog')
+import PropelLog  from '../lib/PropelLog';
 
 describe('PropelLog', () => {
   const log = new PropelLog('test')
@@ -8,7 +6,7 @@ describe('PropelLog', () => {
   describe('constructor', () => {
     it('setup varibles should be set', () => {
 
-      assert.equal(log.connection, 'test', 'connection was not set')
+      expect(log.connection).toBe('test'); // 'connection was not set'
     })
   })
 
@@ -25,14 +23,14 @@ describe('PropelLog', () => {
     )
     it('does addToLogs work?', () => {
 
-      assert.equal(log.logs.length, 1, 'no add to logs')
+      expect(log.logs.length).toBe(1); // 'no add to logs')
     })
   })
 
   describe('_createEventId', () => {
     it('getting back an event Id', () => {
 
-      assert.ok(log._createEventId().length > 0, 'event Id is null')
+      expect(log._createEventId().length > 0).toBe(true); // 'event Id is null')
     })
   })
 })

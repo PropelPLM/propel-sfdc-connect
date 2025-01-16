@@ -1,4 +1,4 @@
-const PropelJwtConnect = require('../lib/PropelJwtConnect')
+import { jwtSession } from './lib/PropelJwtConnect.js'
 
 const thekey =
 `-----BEGIN RSA PRIVATE KEY-----
@@ -6,7 +6,7 @@ const thekey =
 -----END RSA PRIVATE KEY-----`
 
 async function main() {
-    const response = await PropelJwtConnect.getJwt({
+    const response = await jwtSession({
         clientId: '3MVG9p1Q1BCe9GmDW5YDKl_5Udkb5kyGZrff0TV7qUlPpAAGA3Ii27bZmeHFMjhmO7p0_3eM9AIhw02yCKQw7',
         isTest: false,
         privateKey: thekey,

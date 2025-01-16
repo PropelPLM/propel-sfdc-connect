@@ -2,12 +2,27 @@
   "name": "@propelsoftwaresolutions/propel-sfdc-connect",
   "version": "2.0.0-SNAPSHOT.1",
   "description": "Wrapper module for jforce-propel",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "exports": {
-    ".": "./index.js",
-    "./test-sfdx-lib": "./test/sfdx-lib.js"
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js"
+    },
+    "./sfdx-lib": {
+      "import": "./dist/sfdx-lib.js",
+      "require": "./dist/sfdx-lib.cjs"
+    }
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test mocha"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src",
+    "format": "prettier --write \"src/**/*.js\"",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
@@ -17,11 +32,19 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "eslint": "^8.22.0",
-    "mocha": "^10.0.0",
-    "typescript": "^4.8.2"
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "eslint": "^8.42.0",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.8",
+    "rollup": "^3.23.0"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PropelPLM/propel-sfdc-connect.git"
@@ -35,6 +58,5 @@
   "bugs": {
     "url": "https://github.com/PropelPLM/propel-sfdc-connect/issues"
   },
-  "homepage": "https://github.com/PropelPLM/propel-sfdc-connect#readme",
-  "types": "./index.d.ts"
+  "homepage": "https://github.com/PropelPLM/propel-sfdc-connect#readme"
 }

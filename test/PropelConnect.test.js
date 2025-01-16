@@ -1,6 +1,4 @@
-const assert = require('assert')
-
-const PropelConnect = require('../lib/PropelConnect')
+import PropelConnect from '../lib/PropelConnect';
 
 describe('PropelConnect', function () {
   const conn = new PropelConnect(
@@ -9,9 +7,9 @@ describe('PropelConnect', function () {
   )
   describe('constructor', function () {
     it('variables should be set', function () {
-      assert.equal(conn.querySize, 200)
-      assert.equal(conn.serverUrl, 'mysample.salesforce.com')
-      assert.equal(conn.sessionId, 'test_session_id')
+      expect(conn.querySize).toBe(200);
+      expect(conn.serverUrl).toBe('mysample.salesforce.com');
+      expect(conn.sessionId).toBe('test_session_id');
     })
 
     it('testing visual force url', function () {
@@ -19,7 +17,7 @@ describe('PropelConnect', function () {
         'http://mysample.visual.force.com',
         'test_session_id'
       )
-      assert.equal(conn.serverUrl, 'visual.salesforce.com')
+      expect(conn.serverUrl).toBe('visual.salesforce.com');
     })
   })
 })

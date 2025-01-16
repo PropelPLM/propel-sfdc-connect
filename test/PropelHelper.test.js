@@ -1,6 +1,4 @@
-var assert = require('assert');
-
-const PropelHelper = require('../lib/PropelHelper');
+import PropelHelper from '../lib/PropelHelper.js'
 
 const csvObj = {
   'My Test Field': 'Some Value',
@@ -34,111 +32,100 @@ describe('PropelHelper', () => {
   describe('constructor', () => {
     it('variables should be set', () => {
       
-      assert.equal(helper.connection, 'test')
-      assert.equal(helper.executor, null)
-      assert.deepEqual(
-        helper.mapping,
+      expect(helper.connection).toBe('test');
+      expect(helper.executor).toBe(null);
+      expect(helper.mapping).toEqual(
         {
           My_Test_Field__c: 'My Test Field',
           Other_Api_Field__c: 'Other Api Field',
           id: 'Id',
           name: 'Name'
         }
-      )
-      assert.equal(helper.namespaceString, 'TEST')
-      assert.deepEqual(helper.options, { id: 'test' })
+      );
+      expect(helper.namespaceString).toBe('TEST');
+      expect(helper.options).toEqual({ id: 'test' });
     });
   });
 
   // buildQueryIds lets you get a single quote wrapped list of ids for sfdc queries
   describe('buildQueryIds', () => {
     it('return object test', () => {
-      assert.deepEqual(
-        helper.buildQueryIds(testList, 'Id'),
-        [ "'1'", "'2'", "'3'", "'4'" ]
-      )
+      expect(helper.buildQueryIds(testList, 'Id')).toEqual([ "'1'", "'2'", "'3'", "'4'" ]);
     });
   });
 
   // formatter turns string into specified types
   describe('formatter', () => {
     it('return formater test', () => {
-      assert.equal(helper.formatter('double', '1.0'), 1.0, 'number conversion fail')
-      assert.equal(helper.formatter('percent', '10.4'), 10.4, 'percent conversion fail')
-      assert.equal(helper.formatter('boolean', 'FALSE'), false, 'boolean conversion fail')
-      assert.equal(helper.formatter('joe mamma', '1.0'), '1.0', 'default case conversion fail')
+      expect(helper.formatter('double', '1.0') == 1.0).toBe(true); // 'number conversion fail'
+      expect(helper.formatter('percent', '10.4') == 10.4).toBe(true); // 'percent conversion fail'
+      expect(helper.formatter('boolean', 'FALSE')).toBe(false); // 'boolean conversion fail'
+      expect(helper.formatter('joe mamma', '1.0')).toBe('1.0'); // 'default case conversion fail'
     })
   })
 
   describe('getAllValues', () => {
     it('return getAllValues test', () => {
-      assert.deepEqual(helper.getAllValues(testList, 'id', false), [ "1", "2", "3", "4" ], 'none wrapped list')
-      assert.deepEqual(helper.getAllValues(testList, 'id', true), [ "'1'", "'2'", "'3'", "'4'" ], 'wrapped list')
+      expect(helper.getAllValues(testList, 'id', false)).toEqual([ "1", "2", "3", "4" ]); // 'none wrapped list'
+      expect(helper.getAllValues(testList, 'id', true)).toEqual([ "'1'", "'2'", "'3'", "'4'" ]); // 'wrapped list'
     })
   })
 
   describe('getHasMap', () => {
     it('return getHasMap', () => {
-      assert.equal(helper.getHasMap('id'), true, 'mapping has: id')
-      assert.equal(helper.getHasMap('not_there'), false, 'mapping does not have: not_there')
+      expect(helper.getHasMap('id')).toBe(true); // 'mapping has: id'
+      expect(helper.getHasMap('not_there')).toBe(false); // 'mapping does not have: not_there'
     })
   })
 
   describe('getNestedField', () => {
     it('return getNestedField', () => {
-      assert.equal(helper.getNestedField(nestedObj, ['id']), '666', 'array field')
+      expect(helper.getNestedField(nestedObj, ['id'])).toBe('666'); // 'array field'
     })
   })
 
   describe('getValue', () => {
     it('return getValue', () => {
-      assert.equal(helper.getValue(csvObj, 'My_Test_Field__c'), 'Some Value', 'getValue issue')
+      expect(helper.getValue(csvObj, 'My_Test_Field__c')).toBe('Some Value'); // 'getValue issue'
     })
   })
 
   describe('namespace', () => {
     it('return namespaece', () => {
-      assert.equal(helper.namespace('My_Test_Field__c'), 'TEST__My_Test_Field__c', 'namespace')
+      expect(helper.namespace('My_Test_Field__c')).toBe('TEST__My_Test_Field__c'); // 'namespace'
     })
   })
 
   describe('namespaceQuery', () => {
     it('return namespace query string', () => {
-      assert.equal(
-        helper.namespaceQuery('select Id, My_Test_Field__c from Account'),
-        'select Id, TEST__My_Test_Field__c from Account',
-        'namespaceQuery'
-      )
+      expect(helper.namespaceQuery('select Id, My_Test_Field__c from Account')).toBe('select Id, TEST__My_Test_Field__c from Account'); //'namespaceQuery'
     })
   })
 
   describe('objectIsDiff', () => {
     it('return if object is different', () => {
-      assert.equal(helper.objectIsDiff(nestedObj, mappingObj), true, 'object is diff true')
-      assert.equal(helper.objectIsDiff(nestedObj, nestedObj), false, 'object is diff false')
+      expect(helper.objectIsDiff(nestedObj, mappingObj)).toBe(true); // 'object is diff true')
+      expect(helper.objectIsDiff(nestedObj, nestedObj)).toBe(false); // 'object is diff false')
     })
   })
 
   describe('parentNamespace', () => {
     it('return for parentNamespace', () => {
-      assert.equal(
-        helper.parentNamespace('My_custom_object__r.My_custom_field__c'),
-        'TEST__My_custom_object__r.TEST__My_custom_field__c',
-        'parent namespace error')
+      expect(helper.parentNamespace('My_custom_object__r.My_custom_field__c')).toBe('TEST__My_custom_object__r.TEST__My_custom_field__c'); // 'parent namespace error'
     })
   })
 
   describe('randomGenerator', () => {
     it('return from randomGenerator', () => {
-      assert.equal(helper.randomGenerator().length, 20, 'error for randomGenerator')
-      assert.equal(helper.randomGenerator(2).length, 2, 'error for randomGenerator for custom length')
+      expect(helper.randomGenerator().length).toBe(20); // 'error for randomGenerator'
+      expect(helper.randomGenerator(2).length).toBe(2); // 'error for randomGenerator for custom length'
     })
   })
 
   describe('setValue', () => {
     it('return from setValue', () => {
       helper.setValue('New Value', csvObj, 'My_Test_Field__c')
-      assert.equal(csvObj['My Test Field'],'New Value', 'error on setValue')
+      expect(csvObj['My Test Field']).toBe*('New Value'); // 'error on setValue'
     })
   })
 });

@@ -1,3 +1,9 @@
+import fs from 'fs';
+import { once } from 'events';
+import {promisify} from 'util';
+import childProcess from 'child_process';
+
+const exec = promisify(childProcess.exec);
 
 var record = (queryResult) => {
     return queryResult.records.shift();
@@ -63,8 +69,6 @@ let printResults = (what, results) => {
  * provide a simple interface to write out a CSV file
  * and wait for it to flush to disk
  */
-const fs = require('fs');
-const { once } = require('events')
 
 let writeFile = async ({ content, file }) => {
     // output the resulting file CSV
@@ -78,8 +82,6 @@ let writeFile = async ({ content, file }) => {
  * run a diff and return the result, fail if we see an exception
  * the calling test can check the stderr, stdout
  */
-const { promisify } = require('util');
-const exec = promisify(require('child_process').exec);
 
 let compareFiles = async (a, b) => {
     let resp;
@@ -105,18 +107,17 @@ async function bulkDel({ conn, records, table }) {
     }
 }
 
-/**
- * exports listed (limiting to test only for now)
- */
-if (process.env.NODE_ENV === 'test' || process.env.MOCHA_TEST) {
-    exports.bulkDel = bulkDel
-    exports.compareFiles = compareFiles;
-    exports.writeFile  = writeFile;
-    exports.printResults = printResults;
-    exports.record = record;
-    exports.loginWithSfdx  = loginWithSfdx;
-    exports.queryAllAccounts = queryAllAccounts;
-    exports.queryAllAccountsWithLimit = queryAllAccountsWithLimit;
-  } else {
-    throw new Error('sfdx-lib is only available in test environments');
-  }
+// Define the exports object
+const testOnlyExports = {
+    bulkDel,
+    compareFiles,
+    writeFile,
+    printResults,
+    record,
+    queryAllAccounts,
+    queryAllAccountsWithLimit,
+    loginWithSfdx
+};
+
+// Export everything if in test environment, otherwise export nothing
+export default (process.env.NODE_ENV === 'test' || process.env.MOCHA_TEST) ? testOnlyExports : {};
