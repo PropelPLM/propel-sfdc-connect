@@ -1,19 +1,23 @@
 {
   "name": "@propelsoftwaresolutions/propel-sfdc-connect",
-  "version": "1.3.3",
+  "version": "2.0.0-SNAPSHOT.1",
   "description": "Wrapper module for jforce-propel",
-  "exports": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./test-sfdx-lib": "./test/sfdx-lib.js"
+  },
   "scripts": {
-    "test": "mocha"
+    "test": "cross-env NODE_ENV=test mocha"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
-    "express": "^4.18.0",
-    "jsforce": "^1.11.1",
+    "jsforce": "^3.6.3",
     "node-salesforce-jwt": "^1.1.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.22.0",
     "mocha": "^10.0.0",
     "typescript": "^4.8.2"

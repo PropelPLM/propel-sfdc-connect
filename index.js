@@ -8,6 +8,8 @@ const PropelJwtConnect = require('./lib/PropelJwtConnect')
 const PropelParser = require('./lib/PropelParser')
 const PropelHelper = require('./lib/PropelHelper')
 const PropelLog = require('./lib/PropelLog')
+const { createPropelContext } = require('./lib/PropelContext')
+const { logger } = require('./lib/Logger')
 
 module.exports = {
   newChatter: (connection, log) => {
@@ -28,4 +30,6 @@ module.exports = {
   newLog: (connection) => {
     return new PropelLog(connection)
   },
+  createPropelContext,
+  logger
 }
