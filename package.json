@@ -25,6 +25,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
+    "amqplib": "^0.10.5",
     "csv-parser": "^3.0.0",
     "jsforce": "^3.6.3",
     "node-salesforce-jwt": "^1.1.0",

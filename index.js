@@ -10,6 +10,7 @@ import PropelHelper from './lib/PropelHelper.js';
 import PropelLog from './lib/PropelLog.js';
 import { createPropelContext } from './lib/PropelContext.js';
 import { logger } from './lib/Logger.js';
+import { createMessageBroker, startQueueConsumer, startQueueProducer, sendToQueue } from './lib/worker/QueueUtils.js';
 
 export {
   newChatter,
@@ -19,7 +20,8 @@ export {
   newHelper,
   newLog,
   createPropelContext,
-  logger
+  logger,
+  createMessageBroker, startQueueConsumer, startQueueProducer, sendToQueue
 };
 
 function newChatter(connection, log) {
